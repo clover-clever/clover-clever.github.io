@@ -1,0 +1,24 @@
+title: clover-clever
+author: Sanghoon Lee
+email: akdrhaktapfhs1@gmail.com
+description: >-
+  Formula Student, 전력전자, 인버터, BMS 개발 기록 블로그입니다.
+
+remote_theme: bitbrain/jekyll-dash
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-paginate
+
+paginate: 5
+paginate_path: "/blog/page:num/"
+
+dash:
+  date_format: "%Y-%m-%d"
+  social_links:
+    - url: https://github.com/clover-clever
+      icon: github
+      color: purple
+  show_author: true
+  animation_speed: 50
+  rtl: false
