@@ -1,0 +1,54 @@
+---
+layout: home
+title: Clover-Clever의 기술 블로그
+paginate: 5            <!-- paginator 활성화 ─ 꼭 필요! -->
+---
+
+<!-- 🔰 Hero 섹션  ----------------------------------------------------------->
+<h1 style="margin-top:0">🧲⚡🚀 Clover-Clever의 기술 블로그</h1>
+<p>
+  Formula Student, 인버터, BMS, 전력전자, 드론 제어 개발 기록을 공유합니다.<br>
+  하드웨어 설계부터 제어 알고리즘까지 모든 여정을 기록합니다.
+</p>
+
+<hr>
+
+<!-- 📝 최신 글 목록  ------------------------------------------------------->
+<h2>📝 최근 게시글</h2>
+<ul>
+{% for post in paginator.posts %}
+  <li style="margin-bottom:8px">
+    <a href="{{ post.url | relative_url }}">
+      {{ post.title }}
+    </a>
+    <small style="color:#7f8c8d">
+      ({{ post.date | date: "%Y-%m-%d" }})
+    </small>
+  </li>
+{% endfor %}
+</ul>
+
+<!-- 페이지네이션 ----------------------------------------------------------->
+<div style="display:flex;justify-content:space-between;margin-top:1.5rem">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}">⬅ 이전</a>
+  {% endif %}
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}">다음 ➡</a>
+  {% endif %}
+</div>
+
+<hr>
+
+<!-- 🔗 외부 링크 ----------------------------------------------------------->
+<h2>🔗 외부 링크</h2>
+<ul>
+  <li>💼 <a href="https://github.com/clover-clever">GitHub 프로필</a></li>
+  <li>🏁 <a href="https://www.racehanyang.com/">한양대 Formula Student 팀 RACE</a></li>
+</ul>
+
+<!-- 푸터 ------------------------------------------------------------------->
+<div align="center" style="margin-top:2rem;font-size:0.9rem;color:#7f8c8d">
+  © 2025 Sanghoon Lee – Powered by
+  <a href="https://github.com/bitbrain/jekyll-dash">jekyll-dash</a>
+</div>
