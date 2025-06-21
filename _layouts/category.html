@@ -1,0 +1,14 @@
+---
+layout: home            <!-- 대시 테마의 home 레이아웃을 그대로 사용 -->
+---
+
+<h1>#{{ page.category }}</h1>
+<ul>
+  {% assign posts = site.posts | where_exp:"p","p.categories contains page.category" %}
+  {% for post in posts %}
+    <li>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <small>{{ post.date | date:"%Y-%m-%d" }}</small>
+    </li>
+  {% endfor %}
+</ul>
