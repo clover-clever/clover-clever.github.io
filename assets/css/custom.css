@@ -1,0 +1,19 @@
+/* 전역 링크 색상 */
+a, a:visited   { color:#32CD32 !important; }   /* LimeGreen  */
+a:hover        { color:#228B22 !important; }   /* ForestGreen*/
+
+/* 헤더·푸터 배경 */
+header.site-header,
+.navbar,
+footer.site-footer {
+  background:#228B22 !important;
+}
+
+/* 버튼·태그·페이지네이션 */
+.btn,
+.tag-list a,
+.pagination a {
+  background:#32CD32 !important;
+  color:#fff !important;
+  border:none !important;
+}
