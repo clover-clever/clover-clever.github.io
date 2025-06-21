@@ -16,15 +16,6 @@ title: Clover-Clever의 기술 블로그
 
 ---
 
-## 📢 최근 게시글
-
-아래는 최신 개발 기록입니다.  
-`_posts/` 디렉토리에 작성한 글들이 여기 자동으로 나열됩니다.
-
-> 새 글을 쓰시려면 `_posts/YYYY-MM-DD-제목.md` 형식으로 추가하세요.
-
----
-
 ## 🔗 외부 링크
 
 - 💼 [GitHub 프로필 바로가기](https://github.com/clover-clever)
