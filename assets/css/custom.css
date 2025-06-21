@@ -54,7 +54,12 @@ small, time {
 }
 
 /* ===== (옵션) 코드 블록·인라인 코드 색감 ==============*/
-/* ===== 기본 home 레이아웃의 자동 "recent articles" 섹션 숨기기 ===== */
-section.posts { display:none !important; }
+/* ───── 자동 "recent articles" 섹션만 숨기기 ───── */
+#posts,
+section.posts{
+  display:none !important;      /* 화면·포커스·SEO 모두 제거 */
+  height:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+}
 
-code, pre { color:var(--yellow); }
