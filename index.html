@@ -7,9 +7,20 @@ paginate: 5            <!-- paginator 활성화 ─ 꼭 필요! -->
 <!-- 🔰 Hero 섹션  ----------------------------------------------------------->
 <h1 style="margin-top:0">🧲⚡🚀 Clover-Clever의 기술 블로그</h1>
 <p>
-  Formula Student, 회로설계, PCB설계, 전력전자, 모터제어.<br>
+  Formula Student, 회로·PCB 설계, 전력전자, 모터제어, 드론 시스템.<br>
   하드웨어 설계부터 제어 알고리즘까지 모든 여정을 기록합니다.
 </p>
+
+<!-- 📂 카테고리 블록  ------------------------------------------------------->
+<h2>📂 카테고리</h2>
+<ul>
+  <li><a href="/category/power-electronics/">Power&nbsp;Electronics</a></li>
+  <li><a href="/category/motor-control/">Motor&nbsp;Control</a></li>
+  <li><a href="/category/bms/">BMS</a></li>
+  <li><a href="/category/drone/">Drone&nbsp;Systems</a></li>
+  <li><a href="/category/sw/">SW</a></li>
+  <li><a href="/category/basic-electronics/">Basic&nbsp;Electronics</a></li>
+</ul>
 
 <hr>
 
@@ -18,24 +29,16 @@ paginate: 5            <!-- paginator 활성화 ─ 꼭 필요! -->
 <ul>
 {% for post in paginator.posts %}
   <li style="margin-bottom:8px">
-    <a href="{{ post.url | relative_url }}">
-      {{ post.title }}
-    </a>
-    <small style="color:#7f8c8d">
-      ({{ post.date | date: "%Y-%m-%d" }})
-    </small>
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <small style="color:#7f8c8d">({{ post.date | date: "%Y-%m-%d" }})</small>
   </li>
 {% endfor %}
 </ul>
 
 <!-- 페이지네이션 ----------------------------------------------------------->
 <div style="display:flex;justify-content:space-between;margin-top:1.5rem">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path }}">⬅ 이전</a>
-  {% endif %}
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path }}">다음 ➡</a>
-  {% endif %}
+  {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path }}">⬅ 이전</a>{% endif %}
+  {% if paginator.next_page %}<a href="{{ paginator.next_page_path }}">다음 ➡</a>{% endif %}
 </div>
 
 <hr>
@@ -49,6 +52,6 @@ paginate: 5            <!-- paginator 활성화 ─ 꼭 필요! -->
 
 <!-- 푸터 ------------------------------------------------------------------->
 <div align="center" style="margin-top:2rem;font-size:0.9rem;color:#7f8c8d">
-  © 2025 clover-clever – Powered by
+  © 2025 clover-clever — Powered by
   <a href="https://github.com/bitbrain/jekyll-dash">jekyll-dash</a>
 </div>
