@@ -17,3 +17,9 @@ footer.site-footer {
   color:#fff !important;
   border:none !important;
 }
+
+/* ===== H1 메인 타이틀 전용 색상 (Lime Green) ===== */
+h1 {
+  color:#32CD32 !important;   /* LimeGreen (#32CD32) */
+}
+
