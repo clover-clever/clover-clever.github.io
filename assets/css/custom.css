@@ -9,9 +9,6 @@ header.site-header,
   background:#228B22 !important;   /* 헤더만 초록 */
 }
 
-footer.site-footer {
-  background:#1b1b1b !important;   /* 기본 다크 (#1b1b1b 정도) */
-}
 
 
 /* 버튼·태그·페이지네이션 */
