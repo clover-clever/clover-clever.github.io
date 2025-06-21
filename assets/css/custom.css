@@ -1,33 +1,43 @@
-/* 전역 링크 색상 */
-a, a:visited   { color:#32CD32 !important; }   /* LimeGreen  */
-a:hover        { color:#228B22 !important; }   /* ForestGreen*/
-
-/* 헤더·푸터 배경 */
-/* 헤더·푸터 배경 */
-header.site-header,
-.navbar {
-  background:#228B22 !important;   /* 헤더만 초록 */
+/* ===== 팔레트 변수 =================================== */
+:root{
+  --dash-pink:   #ff4081;
+  --dash-green:  #4caf50;
+  --dash-blue:   #448aff;
+  --dash-yellow: #ffca28;
 }
-/*
-footer.site-footer {
-  background:#1b1b1b !important;  
-}
-*/
-/* 기본 다크 (#1b1b1b 정도) */
 
+/* ===== 링크 ========================================= */
+a, a:visited          { color:var(--dash-green) !important; }
+a:hover               { color:var(--dash-blue)  !important; }
 
+/* ===== 메인 타이틀(H1) =============================== */
+h1 { color:var(--dash-green) !important; }
 
-/* 버튼·태그·페이지네이션 */
+/* ===== 섹션 소제목(H2) – 카테고리·최근글·외부링크 ===== */
+h2:nth-of-type(1) { color:var(--dash-yellow) !important; } /* 카테고리 */
+h2:nth-of-type(2) { color:var(--dash-pink)   !important; } /* 최근 게시글 */
+h2:nth-of-type(3) { color:var(--dash-blue)   !important; } /* 외부 링크 */
+
+/* ===== 카테고리 목록 링크 ============================ */
+ul li a[href^="/category/"]       { color:var(--dash-green) !important; }
+ul li a[href^="/category/"]:hover { color:var(--dash-yellow) !important; }
+
+/* ===== 버튼·태그·페이지네이션 ======================== */
 .btn,
 .tag-list a,
 .pagination a {
-  background:#32CD32 !important;
+  background:var(--dash-green) !important;
   color:#fff !important;
   border:none !important;
 }
-
-/* ===== H1 메인 타이틀 전용 색상 (Lime Green) ===== */
-h1 {
-  color:#32CD32 !important;   /* LimeGreen (#32CD32) */
+.pagination a:hover,
+.tag-list a:hover {
+  background:var(--dash-blue) !important;
 }
 
+/* ===== 코드 하이라이트(선택) ========================= */
+/* 필요 없다면 삭제 */
+code, pre { color:var(--dash-yellow); }
+
+/* ===== 헤더·푸터 배경은 그대로 ======================= */
+/* header.site-header, footer.site-footer  : 손대지 않음 */
