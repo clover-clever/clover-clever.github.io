@@ -9,16 +9,27 @@ remote_theme: bitbrain/jekyll-dash
 plugins:
   - jekyll-remote-theme
   - jekyll-paginate
+  - jekyll-feed
+  - jekyll-seo-tag
 
 paginate: 5
 paginate_path: "/blog/page:num/"
 
+collections:
+  posts:
+    output: true
+
 dash:
   date_format: "%Y-%m-%d"
+
   social_links:
     - url: https://github.com/clover-clever
-      icon: github
-      color: purple
+      icon: github-square
+      color: green     # ✅ 아이콘 색상을 초록 계열로
+
   show_author: true
   animation_speed: 50
   rtl: false
+
+  # ✅ 테마 전체 색상 강조 요소를 초록 계열로 바꾸고 싶다면 아래도 가능
+  # 다만, jekyll-dash에서는 직접 CSS를 수정하거나 override 해야 완벽 적용됨
