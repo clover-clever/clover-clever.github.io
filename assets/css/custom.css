@@ -1,43 +1,57 @@
-/* ===== 팔레트 변수 =================================== */
+/* ===== 팔레트 ========================================= */
 :root{
-  --dash-pink:   #ff4081;
-  --dash-green:  #4caf50;
-  --dash-blue:   #448aff;
-  --dash-yellow: #ffca28;
+  --pink:   #ff5c8d;
+  --green:  #4caf50;
+  --blue:   #448aff;
+  --yellow: #ffeb3b;
 }
 
-/* ===== 링크 ========================================= */
-a, a:visited          { color:var(--dash-green) !important; }
-a:hover               { color:var(--dash-blue)  !important; }
+/* ----- 링크 (본문) ------------------------------------*/
+a, a:visited   { color:var(--blue) !important; }
+a:hover        { color:var(--pink) !important; }
 
-/* ===== 메인 타이틀(H1) =============================== */
-h1 { color:var(--dash-green) !important; }
+/* ----- 헤드라인 색 ------------------------------------*/
+h1 { color:var(--green) !important; }   /* 메인 타이틀 */
 
-/* ===== 섹션 소제목(H2) – 카테고리·최근글·외부링크 ===== */
-h2:nth-of-type(1) { color:var(--dash-yellow) !important; } /* 카테고리 */
-h2:nth-of-type(2) { color:var(--dash-pink)   !important; } /* 최근 게시글 */
-h2:nth-of-type(3) { color:var(--dash-blue)   !important; } /* 외부 링크 */
+h2 {
+  margin-bottom:0.4rem;
+  font-weight:700;
+}
+h2:nth-of-type(1) { color:var(--yellow) !important; }  /* 카테고리 */
+h2:nth-of-type(2) { color:var(--pink)   !important; }  /* 최근 게시글 */
+h2:nth-of-type(3) { color:var(--blue)   !important; }  /* 외부 링크 */
 
-/* ===== 카테고리 목록 링크 ============================ */
-ul li a[href^="/category/"]       { color:var(--dash-green) !important; }
-ul li a[href^="/category/"]:hover { color:var(--dash-yellow) !important; }
+/* ----- 카테고리 링크 ----------------------------------*/
+ul li a[href^="/category/"] {
+  color:var(--green) !important;
+}
+ul li a[href^="/category/"]:hover {
+  color:var(--yellow) !important;
+}
 
-/* ===== 버튼·태그·페이지네이션 ======================== */
+/* ----- 최근/외부 링크 내부 목록 ------------------------*/
+ul li a:not([href^="/category/"]):hover {
+  text-decoration:underline;
+}
+
+/* ----- 날짜(본문 소소 텍스트) --------------------------*/
+small, time {
+  color:#5fa8ff !important;            /* 블루 톤다운 */
+}
+
+/* ----- 버튼·태그·페이지네이션 -------------------------*/
 .btn,
 .tag-list a,
-.pagination a {
-  background:var(--dash-green) !important;
+.pagination a{
+  background:var(--green) !important;
   color:#fff !important;
   border:none !important;
 }
-.pagination a:hover,
-.tag-list a:hover {
-  background:var(--dash-blue) !important;
+.btn:hover,
+.tag-list a:hover,
+.pagination a:hover{
+  background:var(--pink) !important;
 }
 
-/* ===== 코드 하이라이트(선택) ========================= */
-/* 필요 없다면 삭제 */
-code, pre { color:var(--dash-yellow); }
-
-/* ===== 헤더·푸터 배경은 그대로 ======================= */
-/* header.site-header, footer.site-footer  : 손대지 않음 */
+/* ===== (옵션) 코드 블록·인라인 코드 색감 ==============*/
+code, pre { color:var(--yellow); }
