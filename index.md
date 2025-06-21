@@ -29,8 +29,6 @@ title: Clover-Clever의 기술 블로그
 
 - 💼 [GitHub 프로필 바로가기](https://github.com/clover-clever)
 - 🏁 [한양대 Formula Student 팀 RACE](https://www.racehanyang.com/)
-- 📝 [블로그 RSS 피드](/feed.xml)
-
 ---
 
 > © 2025 Sanghoon Lee – Powered by [jekyll-dash](https://github.com/bitbrain/jekyll-dash)
