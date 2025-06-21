@@ -3,7 +3,7 @@ layout: home
 title: Clover-Clever의 기술 블로그
 ---
 
-# 👋 Clover-Clever의 기술 블로그에 오신 걸 환영합니다!
+# 🧲⚡🚀Clover-Clever의 기술 블로그에 오신 걸 환영합니다!
 
 **Formula Student, 인버터, BMS, 전력전자, 드론 제어 개발 기록**을 공유합니다.  
 
