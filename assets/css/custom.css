@@ -3,11 +3,16 @@ a, a:visited   { color:#32CD32 !important; }   /* LimeGreen  */
 a:hover        { color:#228B22 !important; }   /* ForestGreen*/
 
 /* 헤더·푸터 배경 */
+/* 헤더·푸터 배경 */
 header.site-header,
-.navbar,
-footer.site-footer {
-  background:#228B22 !important;
+.navbar {
+  background:#228B22 !important;   /* 헤더만 초록 */
 }
+
+footer.site-footer {
+  background:#1b1b1b !important;   /* 기본 다크 (#1b1b1b 정도) */
+}
+
 
 /* 버튼·태그·페이지네이션 */
 .btn,
