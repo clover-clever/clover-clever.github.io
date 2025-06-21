@@ -25,7 +25,7 @@ dash:
   social_links:
     - url: https://github.com/clover-clever
       icon: github-square
-      color: green     # ✅ 아이콘 색상을 초록 계열로
+      color: teal     # ✅ 아이콘 색상을 초록 계열로
 
   show_author: true
   animation_speed: 50
