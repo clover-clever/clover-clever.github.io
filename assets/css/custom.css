@@ -1,151 +1,41 @@
-/* ===== 팔레트 ========================================= */
-:root{
-  --pink:   #ff5c8d;
-  --green:  #4caf50;
-  --blue:   #448aff;
-  --yellow: #ffeb3b;
+---
+---
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* ─── 전역 설정 ─────────────────────────────────────── */
+$bg-dark: #0d001a;
+$neon-green: #39ff14;
+$neon-blue:  #00ffff;
+$neon-pink:  #ff00ff;
+
+body {
+  background: $bg-dark url('/assets/img/pixel-bg.png') repeat;
+  color: $neon-blue;
+  font-family: 'Press Start 2P', monospace;
+  line-height: 1.6;
 }
 
-/* ----- 링크 (본문) ------------------------------------*/
-a, a:visited   { color:var(--blue) !important; }
-a:hover        { color:var(--pink) !important; }
-
-/* ----- 헤드라인 색 ------------------------------------*/
-h1 { color:var(--green) !important; }   /* 메인 타이틀 */
-
-h2 {
-  margin-bottom:0.4rem;
-  font-weight:700;
+a, a:visited {
+  color: $neon-pink; text-shadow: 0 0 4px $neon-pink;
 }
-h2:nth-of-type(1) { color:var(--yellow) !important; }  /* 카테고리 */
-h2:nth-of-type(2) { color:var(--pink)   !important; }  /* 최근 게시글 */
-h2:nth-of-type(3) { color:var(--blue)   !important; }  /* 외부 링크 */
-
-/* ----- 카테고리 링크 ----------------------------------*/
-ul li a[href^="/category/"] {
-  color:var(--green) !important;
-}
-ul li a[href^="/category/"]:hover {
-  color:var(--yellow) !important;
+a:hover {
+  color: $neon-blue; text-shadow: 0 0 6px $neon-blue;
 }
 
-/* ----- 최근/외부 링크 내부 목록 ------------------------*/
-ul li a:not([href^="/category/"]):hover {
-  text-decoration:underline;
-}
-
-/* ----- 날짜(본문 소소 텍스트) --------------------------*/
-small, time {
-  color:#5fa8ff !important;            /* 블루 톤다운 */
-}
-
-/* ----- 버튼·태그·페이지네이션 -------------------------*/
-.btn,
-.tag-list a,
-.pagination a{
-  background:var(--green) !important;
-  color:#fff !important;
-  border:none !important;
-}
-.btn:hover,
-.tag-list a:hover,
-.pagination a:hover{
-  background:var(--pink) !important;
-}
-
-/* ===== (옵션) 코드 블록·인라인 코드 색감 ==============*/
-/* ───── 자동 "recent articles" 섹션만 숨기기 ───── */
-#posts,
-section.posts{
-  display:none !important;      /* 화면·포커스·SEO 모두 제거 */
-  height:0 !important;
-  margin:0 !important;
-  padding:0 !important;
-}
-
-
-/* ─────────── 2단 레이아웃 그리드 ─────────── */
-.layout-container {
-  display: grid;
-  grid-template-columns: 200px 1fr;  /* 200px 폭의 사이드바 + 남은 공간 본문 */
-  gap: 2rem;
-  align-items: start;
-  margin: 2rem auto;
-  max-width: 960px;
-  padding: 0 1rem;
-}
-
-/* ─── 사이드바 스타일 ───────────────── */
-.sidebar {
-  background: #1f1f1f;
-  padding: 1rem;
-  border-radius: 8px;
-}
-.sidebar h2 {
-  margin-top: 0;
-}
-.sidebar ul {
-  list-style: none;
-  padding-left: 0;
-}
-.sidebar li {
-  margin: .5rem 0;
-}
-.sidebar a {
-  color: var(--green) !important;
-  text-decoration: none;
-}
-.sidebar a:hover {
-  color: var(--yellow) !important;
-}
-
-/* ─── 메인 컨텐츠 ───────────────────────── */
-.content {
-  padding: 1rem 0;
-}
-.hero h1 {
-  margin-top: 0;
-  font-size: 2rem;
-}
-.posts-listing ul {
-  list-style: none;
-  padding-left: 0;
-}
-.posts-listing li {
-  margin: .75rem 0;
-}
-.posts-listing a {
-  color: var(--blue) !important;
-  text-decoration: none;
-  font-weight: 500;
-}
-.posts-listing a:hover {
-  color: var(--pink) !important;
-}
-.posts-listing small {
-  margin-left: .5rem;
-  color: #aaa !important;
-}
-.pagination {
-  display: flex;
-  justify-content: space-between;
+h1, h2, h3 {
+  color: $neon-green;
+  text-shadow: 0 0 6px $neon-green;
   margin-top: 1.5rem;
 }
+
 .pagination a {
-  padding: .5rem 1rem;
-  background: var(--green) !important;
-  color: #fff !important;
-  border-radius: 4px;
-  text-decoration: none;
-}
-.pagination a:hover {
-  background: var(--pink) !important;
+  background: transparent;
+  border: 2px solid $neon-blue;
+  padding: .4rem .8rem;
 }
 
-/* ─── 자동 recent-articles 블록 숨기기 ───────── */
-#posts, section.posts,
-section.recent {
-  display: none !important;
+.sidebar, .page-sidebar {
+  background: rgba(13,0,26,0.85);
+  border-left: 4px solid $neon-blue;
 }
-
-
