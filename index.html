@@ -1,62 +1,30 @@
 ---
-layout: home
+layout: page
 title: Clover-Clever의 기술 블로그
-paginate: 5
+permalink: /
 ---
 
-<div class="layout-container">
-  <!-- ─── 사이드바 (왼쪽) ─────────────────────────────── -->
-  <aside class="sidebar">
-    <h2>📂 카테고리</h2>
-    <ul class="category-list">
-      <li><a href="/category/power-electronics/">Power Electronics</a></li>
-      <li><a href="/category/motor-control/">Motor Control</a></li>
-      <li><a href="/category/bms/">BMS</a></li>
-      <li><a href="/category/drone/">Drone Systems</a></li>
-      <li><a href="/category/sw/">SW</a></li>
-      <li><a href="/category/basic-electronics/">Basic Electronics</a></li>
-      <li><a href="/category/formula-student/">Formula Student</a></li>
-    </ul>
+<!-- Hero ------------------------------------------------------------>
+# 🧲⚡🚀 Clover-Clever의 기술 블로그
+Formula Student, 회로·PCB 설계, 전력전자, 모터제어, 드론 시스템.  
+하드웨어 설계부터 제어 알고리즘까지 모든 여정을 기록합니다.
 
-    <h2>🔗 외부 링크</h2>
-    <ul class="external-links">
-      <li>💼 <a href="https://github.com/clover-clever">GitHub 프로필</a></li>
-      <li>🏁 <a href="https://www.racehanyang.com/">RACE Hanyang</a></li>
-    </ul>
-  </aside>
+---
 
-  <!-- ─── 메인 컨텐츠 (오른쪽) ───────────────────────── -->
-  <main class="content">
-    <!-- Hero -->
-    <header class="hero">
-      <h1>🧲⚡🚀 Clover-Clever의 기술 블로그</h1>
-      <p>
-        Formula Student, 회로·PCB 설계, 전력전자, 모터제어, 드론 시스템.<br>
-        하드웨어 설계부터 제어 알고리즘까지 모든 여정을 기록합니다.
-      </p>
-    </header>
+<!-- 최근 글 --------------------------------------------------------->
+## 📝 최근 게시글
+<ul>
+{% for post in paginator.posts %}
+  <li>
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <small>({{ post.date | date: "%Y-%m-%d" }})</small>
+  </li>
+{% endfor %}
+</ul>
 
-    <!-- 최신 글 목록 -->
-    <section class="posts-listing">
-      <h2>📝 최근 게시글</h2>
-      <ul>
-        {% for post in paginator.posts %}
-        <li>
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          <small>({{ post.date | date: "%Y-%m-%d" }})</small>
-        </li>
-        {% endfor %}
-      </ul>
-
-      <!-- 페이지네이션 -->
-      <nav class="pagination">
-        {% if paginator.previous_page %}
-          <a href="{{ paginator.previous_page_path }}">⬅ 이전</a>
-        {% endif %}
-        {% if paginator.next_page %}
-          <a href="{{ paginator.next_page_path }}">다음 ➡</a>
-        {% endif %}
-      </nav>
-    </section>
-  </main>
-</div>
+{% if paginator.total_pages > 1 %}
+<nav class="pagination">
+  {% if paginator.previous_page %}[⬅ 이전]({{ paginator.previous_page_path }}){% endif %}
+  {% if paginator.next_page %}[다음 ➡]({{ paginator.next_page_path }}){% endif %}
+</nav>
+{% endif %}
