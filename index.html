@@ -3,7 +3,7 @@ layout: home
 title: Clover-Clever의 기술 블로그
 paginate: 5
 ---
- 
+
 <div class="layout-container">
   <!-- ─── 사이드바 (왼쪽) ─────────────────────────────── -->
   <aside class="sidebar">
@@ -15,6 +15,7 @@ paginate: 5
       <li><a href="/category/drone/">Drone Systems</a></li>
       <li><a href="/category/sw/">SW</a></li>
       <li><a href="/category/basic-electronics/">Basic Electronics</a></li>
+      <li><a href="/category/Formula-student/">Formula Student</a></li>
     </ul>
 
     <h2>🔗 외부 링크</h2>
@@ -26,14 +27,15 @@ paginate: 5
 
   <!-- ─── 메인 컨텐츠 (오른쪽) ───────────────────────── -->
   <main class="content">
+    <!-- Hero -->
     <header class="hero">
       <h1>🧲⚡🚀 Clover-Clever의 기술 블로그</h1>
       <p>
-        Formula Student EV, control system, circuit design.<br>
-        Passionate enginner.
+        Formula Student, 회로·PCB 설계, 전력전자, 모터제어, 드론 시스템.<br
       </p>
     </header>
 
+    <!-- 최신 글 목록 -->
     <section class="posts-listing">
       <h2>📝 최근 게시글</h2>
       <ul>
@@ -45,6 +47,7 @@ paginate: 5
         {% endfor %}
       </ul>
 
+      <!-- 페이지네이션 -->
       <nav class="pagination">
         {% if paginator.previous_page %}
           <a href="{{ paginator.previous_page_path }}">⬅ 이전</a>
