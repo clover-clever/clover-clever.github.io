@@ -2,9 +2,9 @@ title: clover-clever
 author: Sanghoon Lee
 email: akdrhaktapfhs1@gmail.com
 description: >-
-  Formula Student, 전력전자, 인버터, BMS 개발 기록 블로그입니다.
+  모스펫 도둑입니다.
 
-remote_theme: bitbrain/jekyll-dash
+remote_theme: ziinahzoor/cybersynth-theme
 
 plugins:
   - jekyll-remote-theme
