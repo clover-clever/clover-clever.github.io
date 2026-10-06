@@ -11,14 +11,16 @@
       {% endif %}
     {% endfor %}
     <section class="stash-collection" aria-labelledby="stash-collection-{{ forloop.index }}">
-      <h2 id="stash-collection-{{ forloop.index }}">
+      <h2 id="stash-collection-{{ forloop.index }}"{% if topic_names.size == 0 %} class="d-flex align-items-center justify-content-between gap-2"{% endif %}>
         {% if collection_count > 0 %}
           {% capture collection_url %}/categories/{{ collection.name | slugify | url_encode }}/{% endcapture %}
           <a href="{{ collection_url | relative_url }}">{{ collection.name }}</a>
         {% else %}
           {{ collection.name }}
         {% endif %}
+        {% if topic_names.size == 0 %}<small class="text-muted">{{ collection_count }}편</small>{% endif %}
       </h2>
+      {% if topic_names.size > 0 %}
       <ul class="stash-topics">
         {% for topic_name in topic_names %}
           {% assign topic_count = site.categories[topic_name] | size %}
@@ -35,6 +37,7 @@
           </li>
         {% endfor %}
       </ul>
+      {% endif %}
     </section>
   {% endfor %}
 </div>
