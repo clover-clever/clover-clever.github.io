@@ -4,18 +4,10 @@ brand:
 
 collections:
   - name: 모터제어·전력전자
-    eyebrow: Motor control & power electronics
-    description: 물리 모델에서 제어와 구현까지, 가정과 한계를 함께 살펴봅니다.
     topics:
       - name: 모터드라이브
-        description: 모터의 물리, 전류제어, 구동과 실험
       - name: 컨버터
-        description: 스위칭 회로, 모델링, 제어와 설계
   - name: 이모저모
-    eyebrow: Whatever sparks curiosity
-    description: 수학과 물리를 비롯해, 호기심이 향하는 곳을 기록합니다.
     topics:
       - name: 수학
-        description: 선형대수, 미적분, 그리고 이해를 돕는 언어
       - name: 물리·과학
-        description: 원리와 현상을 따라 넓혀 가는 질문들

@@ -11,7 +11,6 @@
       {% endif %}
     {% endfor %}
     <section class="stash-collection" aria-labelledby="stash-collection-{{ forloop.index }}">
-      <p class="stash-kicker">{{ collection.eyebrow }}</p>
       <h2 id="stash-collection-{{ forloop.index }}">
         {% if collection_count > 0 %}
           {% capture collection_url %}/categories/{{ collection.name | slugify | url_encode }}/{% endcapture %}
@@ -20,10 +19,8 @@
           {{ collection.name }}
         {% endif %}
       </h2>
-      <p>{{ collection.description }}</p>
       <ul class="stash-topics">
         {% for topic_name in topic_names %}
-          {% assign topic = collection.topics | where: 'name', topic_name | first %}
           {% assign topic_count = site.categories[topic_name] | size %}
           <li>
             <div class="d-flex align-items-center justify-content-between gap-2">
@@ -35,7 +32,6 @@
               {% endif %}
               <small class="text-muted">{{ topic_count }}편</small>
             </div>
-            {% if topic.description %}<p>{{ topic.description }}</p>{% endif %}
           </li>
         {% endfor %}
       </ul>
