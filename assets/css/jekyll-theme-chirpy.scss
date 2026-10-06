@@ -1,0 +1,416 @@
+---
+---
+
+@use 'abstracts/variables' with (
+  $theme: '{{ site.theme_mode }}'
+);
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+/* Catppuccin Mocha overrides for Chirpy 7.6. Keep the theme imports above. */
+:root[data-bs-theme='dark'] {
+  --ctp-rosewater: #f5e0dc;
+  --ctp-flamingo: #f2cdcd;
+  --ctp-pink: #f5c2e7;
+  --ctp-mauve: #cba6f7;
+  --ctp-red: #f38ba8;
+  --ctp-maroon: #eba0ac;
+  --ctp-peach: #fab387;
+  --ctp-yellow: #f9e2af;
+  --ctp-green: #a6e3a1;
+  --ctp-teal: #94e2d5;
+  --ctp-sky: #89dceb;
+  --ctp-sapphire: #74c7ec;
+  --ctp-blue: #89b4fa;
+  --ctp-lavender: #b4befe;
+  --ctp-text: #cdd6f4;
+  --ctp-subtext1: #bac2de;
+  --ctp-subtext0: #a6adc8;
+  --ctp-overlay2: #9399b2;
+  --ctp-overlay1: #7f849c;
+  --ctp-overlay0: #6c7086;
+  --ctp-surface2: #585b70;
+  --ctp-surface1: #45475a;
+  --ctp-surface0: #313244;
+  --ctp-base: #1e1e2e;
+  --ctp-mantle: #181825;
+  --ctp-crust: #11111b;
+
+  /* Page, text, links and controls. */
+  --main-bg: var(--ctp-base);
+  --mask-bg: var(--ctp-crust);
+  --main-border-color: var(--ctp-surface0);
+  --text-color: var(--ctp-text);
+  --text-muted-color: var(--ctp-subtext0);
+  --text-muted-highlight-color: var(--ctp-subtext1);
+  --heading-color: var(--ctp-text);
+  --label-color: var(--ctp-subtext1);
+  --blockquote-border-color: var(--ctp-surface2);
+  --blockquote-text-color: var(--ctp-subtext0);
+  --link-color: var(--ctp-blue);
+  --link-underline-color: var(--ctp-surface2);
+  --button-bg: var(--ctp-mantle);
+  --btn-border-color: var(--ctp-surface1);
+  --btn-backtotop-color: var(--ctp-subtext1);
+  --btn-backtotop-border-color: var(--ctp-surface1);
+  --card-header-bg: var(--ctp-surface0);
+  --checkbox-color: var(--ctp-overlay2);
+  --checkbox-checked-color: var(--ctp-mauve);
+  --img-bg: radial-gradient(circle, var(--ctp-crust), var(--ctp-mantle));
+  --shimmer-bg: linear-gradient(
+    90deg,
+    rgb(205 214 244 / 0%) 0%,
+    rgb(49 50 68 / 55%) 50%,
+    rgb(205 214 244 / 0%) 100%
+  );
+  --menu-bg: var(--ctp-mantle);
+  --menu-border-color: var(--ctp-surface1);
+  --menu-shadow-color: rgb(17 17 27 / 30%);
+  --menu-active-color: var(--ctp-mauve);
+  --menu-highlight-bg: var(--ctp-surface0);
+
+  /* Sidebar, topbar and search. */
+  --site-title-color: var(--ctp-text);
+  --site-subtitle-color: var(--ctp-subtext0);
+  --sidebar-bg: var(--ctp-mantle);
+  --sidebar-border-color: var(--ctp-surface0);
+  --sidebar-muted-color: var(--ctp-subtext0);
+  --sidebar-active-color: var(--ctp-mauve);
+  --sidebar-hover-bg: var(--ctp-surface0);
+  --sidebar-btn-bg: var(--ctp-surface0);
+  --sidebar-btn-color: var(--ctp-subtext1);
+  --avatar-border-color: var(--ctp-surface2);
+  --topbar-bg: rgb(30 30 46 / 90%);
+  --topbar-text-color: var(--ctp-subtext1);
+  --search-border-color: var(--ctp-surface1);
+  --search-icon-color: var(--ctp-overlay2);
+  --input-focus-border-color: var(--ctp-mauve);
+
+  /* Post lists, article tables, contents and cards. */
+  --post-list-text-color: var(--ctp-subtext1);
+  --btn-patinator-text-color: var(--ctp-text);
+  --btn-paginator-hover-color: var(--ctp-surface0);
+  --toc-highlight: var(--ctp-mauve);
+  --toc-popup-border-color: var(--ctp-surface1);
+  --tag-hover: var(--ctp-surface0);
+  --tb-odd-bg: var(--ctp-mantle);
+  --tb-even-bg: var(--ctp-base);
+  --tb-border-color: var(--ctp-surface0);
+  --footnote-target-bg: rgb(137 180 250 / 16%);
+  --btn-share-color: var(--ctp-overlay2);
+  --btn-share-hover-color: var(--ctp-mauve);
+  --card-bg: var(--ctp-mantle);
+  --card-hover-bg: var(--ctp-surface0);
+  --card-shadow:
+    rgb(17 17 27 / 14%) 0 4px 12px 0,
+    rgb(69 71 90 / 55%) 0 0 0 1px;
+  --kbd-wrap-color: var(--ctp-surface1);
+  --kbd-text-color: var(--ctp-text);
+  --kbd-bg-color: var(--ctp-base);
+
+  /* Technical notes and callouts. */
+  --prompt-text-color: var(--ctp-subtext1);
+  --prompt-tip-bg: rgb(166 227 161 / 8%);
+  --prompt-tip-icon-color: var(--ctp-green);
+  --prompt-info-bg: rgb(137 180 250 / 8%);
+  --prompt-info-icon-color: var(--ctp-blue);
+  --prompt-warning-bg: rgb(249 226 175 / 8%);
+  --prompt-warning-icon-color: var(--ctp-yellow);
+  --prompt-danger-bg: rgb(243 139 168 / 8%);
+  --prompt-danger-icon-color: var(--ctp-red);
+
+  /* Tags, category lists and archives. */
+  --tag-border: var(--ctp-surface1);
+  --tag-shadow: var(--ctp-crust);
+  --dash-color: var(--ctp-surface1);
+  --search-tag-bg: var(--ctp-surface0);
+  --categories-border: var(--ctp-surface0);
+  --categories-hover-bg: var(--ctp-surface0);
+  --categories-icon-hover-color: var(--ctp-mauve);
+  --timeline-node-bg: var(--ctp-mauve);
+  --timeline-color: var(--ctp-surface1);
+  --timeline-year-dot-color: var(--ctp-overlay1);
+
+  /* Code frames, line numbers, inline code and file paths. */
+  --language-border-color: var(--ctp-surface0);
+  --highlight-bg-color: var(--ctp-crust);
+  --highlighter-rouge-color: var(--ctp-pink);
+  --highlight-lineno-color: var(--ctp-overlay1);
+  --inline-code-bg: var(--ctp-surface0);
+  --code-color: var(--ctp-text);
+  --code-header-text-color: var(--ctp-subtext0);
+  --code-header-muted-color: var(--ctp-surface1);
+  --code-header-icon-color: var(--ctp-overlay2);
+  --clipboard-checked-color: var(--ctp-green);
+  --filepath-text-color: var(--ctp-blue);
+
+  ::selection {
+    color: var(--ctp-text);
+    background: rgb(203 166 247 / 25%);
+  }
+
+  /* Chirpy gives alternating archive rows a separate, hard-coded gradient. */
+  #archives li:nth-child(odd) {
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      rgb(49 50 68 / 55%),
+      transparent
+    );
+  }
+
+  /* Rouge token colors also need overrides; they do not use Chirpy variables. */
+  .highlight,
+  .highlight .w {
+    color: var(--ctp-text);
+    background-color: var(--ctp-crust);
+  }
+
+  .highlight {
+    .w {
+      background-color: transparent;
+    }
+
+    .c, .ch, .cd, .cm, .cpf, .c1, .cs {
+      color: var(--ctp-overlay2);
+    }
+
+    .cp, .k, .kd, .kn, .kp, .kr, .kv, .nt {
+      color: var(--ctp-mauve);
+    }
+
+    .kc, .no, .m, .mb, .mf, .mh, .mi, .il, .mo, .mx {
+      color: var(--ctp-peach);
+    }
+
+    .kt, .nc, .nn, .ne {
+      color: var(--ctp-yellow);
+    }
+
+    .s, .sb, .sc, .dl, .sd, .s2, .sh, .sx, .s1, .ss {
+      color: var(--ctp-green);
+    }
+
+    .sa, .se, .si, .nd {
+      color: var(--ctp-pink);
+    }
+
+    .sr {
+      color: var(--ctp-teal);
+    }
+
+    .nf, .fm, .na {
+      color: var(--ctp-blue);
+    }
+
+    .nb, .bp {
+      color: var(--ctp-red);
+    }
+
+    .n, .nx, .nv, .vc, .vg, .vi, .vm, .py {
+      color: var(--ctp-text);
+    }
+
+    .o, .ow, .nl {
+      color: var(--ctp-sky);
+    }
+
+    .p, .pi {
+      color: var(--ctp-subtext1);
+    }
+
+    .gp {
+      color: var(--ctp-lavender);
+    }
+
+    .go {
+      color: var(--ctp-subtext0);
+    }
+
+    .gh, .gu {
+      color: var(--ctp-blue);
+      background-color: transparent;
+      font-weight: 600;
+    }
+
+    .gi {
+      color: var(--ctp-green);
+      background-color: rgb(166 227 161 / 10%);
+    }
+
+    .gd, .err {
+      color: var(--ctp-red);
+      background-color: rgb(243 139 168 / 10%);
+    }
+
+    .gr, .gt {
+      color: var(--ctp-red);
+    }
+
+    .hll {
+      background-color: var(--ctp-surface0);
+    }
+  }
+
+  /* Compact introduction, shared by the home and collection index pages. */
+  .stash-intro {
+    margin: 0 0 1.5rem;
+    padding: 0 0 1.25rem;
+    border-bottom: 1px solid var(--main-border-color);
+    color: var(--ctp-subtext1);
+
+    h1, h2 {
+      margin: 0.35rem 0 0.55rem;
+      color: var(--ctp-text);
+      font-size: clamp(1.25rem, 2vw, 1.5rem);
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+    }
+
+    p:not(.stash-kicker) {
+      max-width: 65ch;
+      margin-bottom: 0.55rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .stash-kicker {
+    display: block;
+    margin: 0 0 0.35rem;
+    color: var(--ctp-mauve);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .stash-collections {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin: 1rem 0 1.8rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .stash-collection {
+    display: block;
+    min-width: 0;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--ctp-surface1);
+    border-radius: 0.65rem;
+    color: var(--ctp-text);
+    background: var(--card-bg);
+    overflow-wrap: anywhere;
+
+    a:hover {
+      color: var(--ctp-lavender) !important;
+      border-bottom-color: var(--ctp-lavender);
+      text-decoration: none;
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--ctp-lavender);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    h2, h3 {
+      margin: 0 0 0.4rem;
+      color: var(--ctp-text);
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    p:not(.stash-kicker) {
+      margin: 0.35rem 0 0;
+      color: var(--ctp-subtext0);
+      font-size: 0.925rem;
+      line-height: 1.65;
+    }
+
+    small {
+      color: var(--ctp-subtext0);
+      font-size: 0.8rem;
+    }
+
+    .fa-fw {
+      color: var(--ctp-mauve);
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .stash-topics {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+
+    > li {
+      padding: 0.75rem 0;
+    }
+
+    > li + li {
+      border-top: 1px solid var(--main-border-color);
+    }
+
+    > li:first-child {
+      padding-top: 0;
+    }
+
+    > li:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  /* The sidebar wordmark stays two lines instead of competing with articles. */
+  .stash-brand-top,
+  .stash-brand-bottom {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+  }
+
+  .stash-brand-top {
+    color: var(--ctp-text);
+  }
+
+  .stash-brand-bottom {
+    margin-top: 0.12rem;
+    color: var(--ctp-mauve);
+  }
+
+  @media (max-width: 576px) {
+    .stash-collections {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.7rem;
+    }
+
+    .stash-collection {
+      padding: 0.9rem 1rem;
+    }
+
+    .stash-intro {
+      margin-bottom: 1.2rem;
+      padding-bottom: 1rem;
+    }
+  }
+
+}

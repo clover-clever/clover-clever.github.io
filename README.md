@@ -1,39 +1,81 @@
-# Chirpy Starter
+# MOSFET Thief's Stash
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
-[![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
+**Whatever sparks curiosity**
 
-A minimal, ready-to-use template for creating a blog with the [**Chirpy**][chirpy] Jekyll theme. Get up and running in minutes with all critical files pre-configured.
+MOSFET Thief의 모터 제어·전력전자 공부와 다양한 호기심을 담는 한국어 블로그입니다. Chirpy 테마에 Catppuccin Mocha 색상을 적용합니다. 이 문서는 저장소에서 글을 쓰고 발행할 때 참고하는 운영 가이드입니다.
 
-## Why This Starter Exists
+## 글의 위치와 분류
 
-When installing Chirpy through [RubyGems.org][gem], Jekyll can only read a subset of theme files (`_data`, `_layouts`, `_includes`, `_sass`, `assets`) and limited `_config.yml` options from the gem. As a result, users cannot enjoy the full out-of-the-box experience that Chirpy offers.
+| 경로 | 용도 |
+| --- | --- |
+| `_drafts/` | 사이트 발행 전 초안 |
+| `_posts/` | 발행할 글 |
+| `_tabs/about.md` | 공개 소개 페이지 |
+| `docs/templates/post.md` | 새 글 작성 틀 |
+| `assets/img/posts/` | 글에 사용하는 이미지의 권장 저장 위치 |
 
-To unlock all features, the following files must be present in your Jekyll site:
+첫 시리즈는 RL 회로에서 PMSM까지 이어갑니다. 첫 글의 초안 경로는 `_drafts/rl-circuit-current-response.md`입니다.
 
-```shell
-.
-├── _config.yml
-├── _plugins
-├── _tabs
-└── index.html
+카테고리는 아래 네 조합에서 선택합니다. 배열의 첫 항목은 상위 카테고리, 두 번째 항목은 하위 카테고리입니다.
+
+| 상위 | 하위 | Front matter의 값 |
+| --- | --- | --- |
+| 모터제어·전력전자 | 모터드라이브 | `categories: [모터제어·전력전자, 모터드라이브]` |
+| 모터제어·전력전자 | 컨버터 | `categories: [모터제어·전력전자, 컨버터]` |
+| 이모저모 | 수학 | `categories: [이모저모, 수학]` |
+| 이모저모 | 물리·과학 | `categories: [이모저모, 물리·과학]` |
+
+카테고리는 글의 주제로 고릅니다. 수학 글도 필요한 만큼 깊게 다루며, 여러 분야에 걸치는 내용은 중심 질문에 맞는 한 곳에 두고 태그와 관련 글 링크로 연결합니다.
+
+## 초안 작성
+
+1. `docs/templates/post.md`를 `_drafts/` 아래에 복사하고 내용을 채웁니다.
+2. 제목, 설명, 카테고리와 태그를 글에 맞게 수정합니다. 초안에는 `published: false`를 유지합니다.
+3. 기호·단위·가정·유도를 정리하고, 검증을 수행했다면 방법과 결과를 기록합니다. 아직 확인하지 않은 내용은 그 상태를 명시합니다.
+4. 참고문헌은 실제로 확인한 자료만 적고, 인용한 주장이나 식이 원문과 일치하는지 대조합니다.
+
+**사이트에 표시되지 않는 초안도 공개 저장소에 커밋하면 소스를 누구나 읽을 수 있습니다.** `_drafts/`와 `published: false`는 사이트의 발행 상태를 관리합니다. 비공개로 보관할 메모, 개인 정보, 공유할 수 없는 자료는 공개 저장소에 넣지 않습니다.
+
+AI는 기술적인 빈틈 점검, 문장 편집, Markdown 정리, 변경 내용 검토와 커밋 메시지 작성을 도울 수 있습니다. 증명·실행·실험·연구의 새로움은 실제로 확인한 근거에 맞춰 서술합니다.
+
+## 첫 글 발행
+
+1. 초안을 끝까지 읽고 남아 있는 작성 안내와 임시 문구를 정리합니다.
+2. `_drafts/rl-circuit-current-response.md`를 `_posts/YYYY-MM-DD-rl-circuit-current-response.md`로 옮깁니다. `YYYY-MM-DD`에는 실제 발행일을 넣습니다.
+3. Front matter의 `date`를 발행 시각과 시간대에 맞추고, **`published: false` 항목을 제거합니다.**
+4. 변경 내용을 확인한 뒤 발행 브랜치에 커밋하고 푸시합니다.
+5. GitHub **Actions**에서 해당 커밋의 Pages 배포 워크플로가 성공했는지 확인합니다. 실패하면 로그의 원인을 수정한 뒤 다시 확인합니다.
+6. 배포된 페이지에서 제목, 카테고리, 수식, 이미지, 내부 링크를 열어 보고 모바일 화면에서도 읽히는지 살펴봅니다.
+
+그다음 글도 `_posts/YYYY-MM-DD-slug.md` 형식을 사용합니다. 파일을 옮기거나 푸시한 것만으로 배포 확인이 끝난 것은 아닙니다. Actions 결과와 실제 페이지를 확인한 뒤 발행 상태를 판단합니다.
+
+## 수식 작성
+
+수식이 있는 글이나 페이지는 YAML front matter에 다음 항목을 둡니다.
+
+```yaml
+math: true
 ```
 
-This starter bundles those files from the latest **Chirpy** release along with a [CD][CD] workflow, so you can start writing immediately.
+Chirpy에서는 문장 안의 수식도 `$$R$$`, `$$\tau=L/R$$`처럼 이중 달러 기호로 감쌉니다. 독립된 수식은 앞뒤에 빈 줄을 두고 아래처럼 작성합니다.
 
-## Usage
+```markdown
+$$
+v(t)=R\,i(t)+L\frac{di(t)}{dt}
+$$
+```
 
-Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
+Obsidian 편집 화면에서 보이는 결과와 사이트의 렌더링은 따로 확인합니다. 글의 표·목록 안에 있는 수식도 배포된 페이지에서 살펴봅니다.
 
-## Contributing
+## Obsidian에서 가져올 때
 
-This repository is automatically updated with new releases from the theme repository. If you encounter any issues or want to contribute to its improvement, please visit the [theme repository][chirpy] to provide feedback.
+- `[[문서 이름]]`과 `[[문서 이름|표시 이름]]`은 실제 사이트 주소를 가리키는 일반 Markdown 링크로 바꿉니다.
+- `![[그림.png]]` 같은 임베드는 일반 Markdown 이미지 문법으로 바꿉니다.
+- 첨부 파일은 `assets/img/posts/<slug>/`처럼 저장소 안의 위치로 옮기고, 이미지 경로를 사이트에서 읽을 수 있도록 맞춥니다. 로컬 절대 경로나 Obsidian 보관함 전용 경로는 그대로 사용하지 않습니다.
+- 문장 안의 단일 `$...$` 수식은 Chirpy의 `$$...$$` 규칙에 맞춥니다.
+- 콜아웃, 블록 참조와 플러그인 전용 문법은 사이트에서 표시되는지 확인하고 필요하면 일반 Markdown으로 바꿉니다.
 
-## License
+## 참고
 
-This work is published under [MIT][mit] License.
-
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
-[CD]: https://en.wikipedia.org/wiki/Continuous_deployment
-[mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+- [Chirpy 공식 글 작성 안내](https://chirpy.cotes.page/posts/write-a-new-post/)
+- [이 저장소의 라이선스](LICENSE)

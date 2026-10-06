@@ -1,0 +1,44 @@
+<div class="stash-collections">
+  {% for collection in site.data.stash.collections %}
+    {% assign collection_count = site.categories[collection.name] | size %}
+    {% assign topic_names = collection.topics | map: 'name' %}
+    {% for post in site.categories[collection.name] %}
+      {% assign extra_topic = post.categories[1] %}
+      {% if extra_topic %}
+        {% unless topic_names contains extra_topic %}
+          {% assign topic_names = topic_names | push: extra_topic %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+    <section class="stash-collection" aria-labelledby="stash-collection-{{ forloop.index }}">
+      <p class="stash-kicker">{{ collection.eyebrow }}</p>
+      <h2 id="stash-collection-{{ forloop.index }}">
+        {% if collection_count > 0 %}
+          {% capture collection_url %}/categories/{{ collection.name | slugify | url_encode }}/{% endcapture %}
+          <a href="{{ collection_url | relative_url }}">{{ collection.name }}</a>
+        {% else %}
+          {{ collection.name }}
+        {% endif %}
+      </h2>
+      <p>{{ collection.description }}</p>
+      <ul class="stash-topics">
+        {% for topic_name in topic_names %}
+          {% assign topic = collection.topics | where: 'name', topic_name | first %}
+          {% assign topic_count = site.categories[topic_name] | size %}
+          <li>
+            <div class="d-flex align-items-center justify-content-between gap-2">
+              {% if topic_count > 0 %}
+                {% capture topic_url %}/categories/{{ topic_name | slugify | url_encode }}/{% endcapture %}
+                <a href="{{ topic_url | relative_url }}">{{ topic_name }}</a>
+              {% else %}
+                <span>{{ topic_name }}</span>
+              {% endif %}
+              <small class="text-muted">{{ topic_count }}편</small>
+            </div>
+            {% if topic.description %}<p>{{ topic.description }}</p>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endfor %}
+</div>
