@@ -1,61 +1,61 @@
 ---
-title: "전압을 걸면 전류는 얼마나 빨리 변할까?"
-description: "직렬 RL 회로의 전류 응답을 직접 유도하고, 시정수와 초기 기울기를 구분한 뒤 PMSM 전류 제어로 연결한다."
-categories: [모터제어·전력전자, 모터드라이브]
-tags: [RL 회로, 회로이론, 전류제어]
+title: "How Quickly Does Current Change When You Apply a Voltage?"
+description: "Deriving the step response of a series RL circuit, separating time constant from initial slope, and relating the result to PMSM current control."
+categories: ["Motor Control & Power Electronics", "Motor Drives"]
+tags: [RL Circuit, Circuit Theory, Current Control]
 math: true
 toc: true
 published: false
 ---
 
-> RL에서 PMSM 전류 제어로 · 1
+> From RL circuits to PMSM current control · Part 1
 
-모터의 전류를 제어하려면 먼저 전압을 바꿨을 때 전류가 어떻게 움직이는지 알아야 한다. 저항만 있는 회로에서는 전압과 전류를 옴의 법칙으로 바로 연결할 수 있다. 여기에 인덕터가 들어가면 현재 전류뿐 아니라 **전류가 변하는 속도**까지 고려해야 한다.
+Before controlling motor current, it helps to understand what happens when the applied voltage changes. With a resistor alone, Ohm's law relates voltage and current directly. Add an inductor, and we also have to account for **how quickly the current changes**.
 
-이 글에서는 일정한 전압을 가한 직렬 RL 회로 하나를 다룬다. 목표는 계단 응답 공식을 얻는 데서 멈추지 않고, “전류가 빨리 변한다”는 말이 초기 기울기를 뜻하는지, 최종값에 가까워지는 시간을 뜻하는지 구분하는 것이다. 마지막에는 이 모델을 PMSM 전류 제어에 사용할 때 필요한 조건을 살펴본다.
+We'll start with a simple series RL circuit driven by a constant voltage. Rather than just quoting the step-response equation, I want to separate two different meanings of a "fast" current response: the initial rate of change and the time it takes to approach the final value. Then we'll see how far this simple model carries over to PMSM current control.
 
-## 1. 인덕터는 전류의 변화를 어떻게 제한할까?
+## 1. How does an inductor oppose changes in current?
 
-이상적인 선형 인덕터의 전압은 전류의 시간 변화율에 비례한다.
+For an ideal linear inductor, voltage is proportional to the rate of change of current.
 
 $$
 v_L(t)=L\frac{di(t)}{dt}
 $$
 
-같은 전압이 인덕터에 걸린다면 인덕턴스가 클수록 전류 변화율의 크기는 작다. 유한한 전압만 가하는 조건에서 인덕터의 전류는 순간적으로 뛰어오를 수 없다. 다만 일정 시간 동안 전혀 움직이지 않다가 출발한다는 뜻은 아니다. 전압을 바꾼 직후부터 기울기가 달라질 수 있다.
+With the same voltage across an inductor, a larger inductance gives a smaller rate of change of current. An inductor carrying finite current cannot change that current instantaneously under a finite applied voltage. That doesn't mean the current waits before moving: its slope can change as soon as the voltage changes.
 
-또한 전원 전압 전체가 항상 인덕터에 걸리는 것도 아니다. 직렬 저항에도 전압이 걸리므로, 전류가 커지면 두 소자에 분배되는 전압을 함께 계산해야 한다. 이 차이가 일정한 기울기의 직선 대신 지수함수가 나오는 이유다.
+The entire supply voltage isn't necessarily across the inductor, either. Some of it drops across the series resistor. As current rises, that resistive drop grows. This is why the response is exponential rather than a straight line.
 
-## 2. 변수와 단위를 정하고 최소 모델 세우기
+## 2. Defining the circuit and its variables
 
-전압원, 저항, 인덕터가 하나의 닫힌 직렬 회로를 이루고 있다고 하자. 전압원은 $$ t=0 $$ 이후 일정한 값 $$ V $$를 유지한다. 초기 전류는 직전 동작에서 이어진 $$ I_0 $$이며, 전압을 바꾸는 순간에도 연속이다. 초기 전류가 0이면, 전류가 없던 회로에 DC 전압을 계단 형태로 인가하는 경우가 된다.
+Consider a voltage source, resistor, and inductor connected in series. For $$ t=0 $$ onward, the source holds a constant voltage $$ V $$. The initial current $$ I_0 $$ comes from the preceding operating condition and remains continuous at the switching instant. If $$ I_0=0 $$, we have the familiar case of applying a DC voltage step to an initially unenergized circuit.
 
-| 기호 | 의미 | SI 단위 |
+| Symbol | Meaning | SI unit |
 | --- | --- | --- |
-| $$ t $$ | 전압을 바꾼 뒤의 시간 | s |
-| $$ V $$ | 이후 일정하게 유지하는 전원 전압 | V |
-| $$ i(t) $$ | 직렬 회로에 흐르는 전류 | A |
-| $$ I_0 $$ | 초기 전류, $$ i(0^+)=i(0^-) $$ | A |
-| $$ R $$ | 직렬 저항 | Ω |
-| $$ L $$ | 인덕턴스 | H |
+| $$ t $$ | Time since the voltage step | s |
+| $$ V $$ | Constant applied voltage after the step | V |
+| $$ i(t) $$ | Series current | A |
+| $$ I_0 $$ | Initial current, $$ i(0^+)=i(0^-) $$ | A |
+| $$ R $$ | Series resistance | Ω |
+| $$ L $$ | Inductance | H |
 
-저항과 인덕턴스는 양의 상수, 즉 $$ R>0,\;L>0 $$으로 둔다. 인덕터의 포화, 기생 커패시턴스, 온도 변화는 포함하지 않는다. 전류가 저항과 인덕터의 전압 기준에서 양의 단자로 들어가도록 정하면, 회로를 한 바퀴 도는 전압 관계는 다음과 같다.
+Assume positive, constant resistance and inductance: $$ R>0,\;L>0 $$. We'll ignore saturation, parasitic capacitance, and temperature changes. Taking the passive sign convention for both elements, Kirchhoff's voltage law gives
 
 $$
 V=Ri(t)+L\frac{di(t)}{dt}
 $$
 
-이 기본 방정식과 RL 계단 응답은 [MIT 8.022 Lecture 16의 RL 회로 강의자료](https://ocw.mit.edu/courses/8-022-physics-ii-electricity-and-magnetism-fall-2004/7b7348480e71d4b842dbc339543bd513_lecture16.pdf)에서도 확인할 수 있다.
+You can find the same governing equation and step response in [MIT 8.022 Lecture 16 on RL circuits](https://ocw.mit.edu/courses/8-022-physics-ii-electricity-and-magnetism-fall-2004/7b7348480e71d4b842dbc339543bd513_lecture16.pdf).
 
-전류의 변화율을 따로 쓰면 식의 의미가 더 잘 보인다.
+Rearranging makes the current slope easier to interpret:
 
 $$
 \frac{di(t)}{dt}=\frac{V-Ri(t)}{L}
 $$
 
-전원 전압에서 저항의 전압 강하를 뺀 만큼이 인덕터에 걸린다. 초기 전류가 0이고 전압이 양수라면 처음에는 전원 전압 전체가 인덕터에 걸린다. 이후 전류가 증가할수록 저항의 전압 강하가 커져 전류의 기울기는 줄어든다.
+The inductor gets whatever voltage is left after the resistor's drop. With zero initial current and a positive supply voltage, it initially sees the full supply voltage. As the current builds, the resistive drop increases, reducing the slope.
 
-단위도 확인해 보자.
+It's worth checking the units:
 
 $$
 \frac{\mathrm{V}}{\mathrm{H}}
@@ -63,29 +63,29 @@ $$
 =\frac{\mathrm{A}}{\mathrm{s}}
 $$
 
-전압을 인덕턴스로 나눈 결과는 전류가 아니라 전류의 변화율이다. 이 회로의 상태는 인덕터 전류 하나이고, 그 일차 미분방정식 하나로 응답을 정하므로 **일차 회로**라고 부른다.
+Voltage divided by inductance gives a rate of change of current, not current itself. Since the inductor current is the only state and its behavior follows a first-order differential equation, this is a **first-order circuit**.
 
-## 3. 초기 전류가 0이 아니어도 사용할 수 있는 해
+## 3. Solving for any initial current
 
-전압을 계속 유지하여 전류가 더 이상 변하지 않는다면 미분항이 0이 된다. 따라서 최종 전류는 다음과 같다.
+If we hold the voltage long enough for the current to settle, the derivative goes to zero. The steady-state current is therefore
 
 $$
 I_\infty=\frac{V}{R}
 $$
 
-이제 현재 전류와 최종 전류의 차이를 $$ x(t)=i(t)-I_\infty $$로 두자. 원래 방정식에 대입하면 상수항이 사라진다.
+Define the error from the final value as $$ x(t)=i(t)-I_\infty $$. Substituting this into the original equation removes the constant term:
 
 $$
 L\frac{dx(t)}{dt}=-Rx(t)
 $$
 
-차이가 클수록 그 차이를 줄이는 변화율도 크다. 이 식의 해는 지수함수이고, 초기 조건은 $$ x(0)=I_0-I_\infty $$이다.
+The larger this error, the faster it decays. The solution is exponential, with initial condition $$ x(0)=I_0-I_\infty $$.
 
 $$
 x(t)=(I_0-I_\infty)e^{-Rt/L}
 $$
 
-원래 전류로 돌아오면 일반해를 얻는다.
+Substituting back gives the general current response:
 
 $$
 \boxed{
@@ -97,54 +97,54 @@ i(t)=\frac{V}{R}
 }
 $$
 
-최종값에 초기 차이의 남은 부분을 더한 형태다. 초기 전류가 최종값보다 작으면 증가하고, 크면 감소한다. 둘이 같으면 처음부터 일정하다. 따라서 양의 전압을 걸었다는 사실만으로 전류가 반드시 증가한다고 결론 내릴 수는 없다.
+This is the final current plus the remaining difference from the initial condition. Current rises if it starts below the final value, falls if it starts above it, and stays constant if the two match. A positive applied voltage does not, by itself, guarantee that current will rise.
 
-흔히 보는 식은 초기 전류가 0인 특별한 경우다.
+The familiar zero-initial-current response is just a special case:
 
 $$
 i(t)=\frac{V}{R}\left(1-e^{-t/\tau}\right)
 $$
 
-## 4. 시정수와 초기 기울기는 다른 질문에 답한다
+## 4. Time constant versus initial slope
 
-시정수 $$ \tau=L/R $$의 단위는 초다. 초기값과 최종값이 다르다면, 시정수 한 번이 지난 뒤 남은 차이는 처음 차이의 $$ e^{-1}\approx 0.368 $$배다.
+The time constant $$ \tau=L/R $$ has units of seconds. If the initial and final currents differ, then after one time constant, the remaining error is $$ e^{-1}\approx 0.368 $$ of its starting value.
 
 $$
 i(\tau)-I_\infty=(I_0-I_\infty)e^{-1}
 $$
 
-즉, 초기값에서 최종값까지 변화해야 하는 양의 약 63.2%가 진행된다. 시정수 다섯 번 뒤에도 차이는 정확히 0이 되지 않고 약 0.674% 남는다. 시정수는 최종값을 향한 변화의 **비율**을 읽는 기준이지, 특정 전류에 도달하는 시간을 혼자 결정하는 수치는 아니다.
+In other words, the current has covered about 63.2% of the distance between its initial and final values. Even after five time constants, about 0.674% of the error remains. The time constant describes the **fraction** of the error that disappears, not the absolute time to reach an arbitrary current target.
 
-초기 기울기는 원래 미분방정식에서 구한다.
+We can get the initial slope directly from the differential equation:
 
 $$
 \left.\frac{di}{dt}\right|_{0^+}=\frac{V-RI_0}{L}
 $$
 
-초기 전류가 0이면 더 단순해진다.
+If the initial current is zero, this simplifies to
 
 $$
 \left.\frac{di}{dt}\right|_{0^+}=\frac{V}{L}
 $$
 
-여기에는 저항이 없다. **전압과 인덕턴스를 고정하고 초기 전류를 0으로 두면, 저항을 키워도 초기 기울기는 변하지 않는다.** 저항이 아직 전압을 떨어뜨리지 못하는 순간이기 때문이다. 초기 전류가 0이 아니라면 저항도 초기 기울기에 영향을 준다.
+Notice that resistance disappears. **For fixed voltage and inductance with zero initial current, increasing resistance does not change the initial slope.** At that instant there is no resistive voltage drop. For nonzero initial current, resistance does affect the slope.
 
-다음은 특정 모터의 측정값이 아니라, 차이를 확인하기 위해 선택한 계산 예다. 전압은 12 V, 인덕턴스는 2 mH, 초기 전류는 0 A로 고정한다.
+Here's a numerical example, not a measurement from a motor. We'll keep the voltage at 12 V, inductance at 2 mH, and initial current at 0 A.
 
-| 저항 | 시정수 | 최종 전류 | 초기 기울기 | 1 ms 뒤 전류 |
+| Resistance | Time constant | Final current | Initial slope | Current at 1 ms |
 | --- | --- | --- | --- | --- |
-| 1 Ω | 2 ms | 12 A | 6 A/ms | 약 4.722 A |
-| 2 Ω | 1 ms | 6 A | 6 A/ms | 약 3.793 A |
+| 1 Ω | 2 ms | 12 A | 6 A/ms | About 4.722 A |
+| 2 Ω | 1 ms | 6 A | 6 A/ms | About 3.793 A |
 
-저항이 2 Ω인 회로는 자신의 최종값에 더 짧은 시정수로 접근한다. 하지만 1 ms 뒤 전류의 절대값은 더 작다. 목표가 8 A라면, 최종값이 6 A인 두 번째 회로는 이 전압 조건에서 목표에 도달하지 못한다.
+The 2 Ω circuit approaches its own final value with a shorter time constant. Yet its absolute current after 1 ms is smaller. If the target is 8 A, the second circuit can never reach it under this supply voltage because its steady-state current is only 6 A.
 
-따라서 “저항을 키우면 전류 응답이 빨라진다”는 문장에는 비교 기준이 필요하다. 시정수, 초기 기울기, 같은 목표 전류까지 걸리는 시간은 서로 구분해야 한다.
+So "more resistance makes current respond faster" is incomplete. We need to say whether we're comparing time constants, initial slopes, or the time to reach the same current target.
 
-## 5. PMSM 전류 제어에는 어디까지 연결될까?
+## 5. What carries over to PMSM current control?
 
-PMSM에서는 삼상 전류를 회전자와 함께 회전하는 d축과 q축의 성분으로 표현한다. 이 두 전류는 실제로 분리된 두 권선에 흐르는 전류가 아니라, 같은 삼상 전류를 좌표변환한 성분이다.
+In a PMSM, we represent three-phase currents using d- and q-axis components in a reference frame rotating with the rotor. These components are not currents flowing through two separate physical windings. They're a coordinate transformation of the same three-phase currents.
 
-정현파 자속 분포, 평형 삼상 조건과 일정한 모터 파라미터를 가정하자. 영순분을 제외한 기본 전기 모델은 다음과 같다. 부호는 [MathWorks PMSM 문서의 Park 변환과 전압 방정식](https://www.mathworks.com/help/simscape-electrical/ref/pmsm.html)의 규약을 따른다.
+Assume sinusoidal flux distribution, balanced three-phase operation, and constant motor parameters. Ignoring the zero-sequence component, the electrical model becomes the following. We'll use the voltage and Park-transform conventions from the [MathWorks PMSM documentation](https://www.mathworks.com/help/simscape-electrical/ref/pmsm.html).
 
 $$
 \begin{aligned}
@@ -154,11 +154,11 @@ v_q &= R_s i_q+L_q\frac{di_q}{dt}
 \end{aligned}
 $$
 
-여기서 $$ R_s $$는 고정자 저항, $$ L_d,L_q $$는 각 축의 인덕턴스다. $$ \psi_f $$는 영구자석 쇄교자속이며 단위는 Wb이다. $$ \omega_e $$는 전기각속도이고, 극쌍 수가 $$ p $$이면 기계각속도와 $$ \omega_e=p\omega_m $$의 관계를 갖는다. 두 각속도의 단위는 rad/s다.
+Here, $$ R_s $$ is stator resistance, and $$ L_d,L_q $$ are the d- and q-axis inductances. The permanent-magnet flux linkage $$ \psi_f $$ is measured in Wb. The electrical angular speed is $$ \omega_e $$; for $$ p $$ pole pairs, $$ \omega_e=p\omega_m $$. Both angular speeds are in rad/s.
 
-각 식에는 익숙한 저항 항과 인덕터 항이 있다. 동시에 다른 축 전류와 속도가 결합된 항, 영구자석의 역기전력 항도 있다. 전압만 일정하다고 해서 각 축 전류가 앞에서 구한 RL 계단 응답을 그대로 따르는 것은 아니다.
+Each equation has the familiar resistive and inductive terms, but also speed-dependent cross-coupling and, on the q axis, permanent-magnet back EMF. A constant applied voltage therefore does not generally produce the simple RL step response derived above.
 
-전기각속도가 0으로 유지되는 정지 조건에서는 이 속도 항들이 사라진다. 회전 중에도 결합항과 역기전력 항을 정확히 계산하여 전압 지령에서 상쇄할 수 있다고 이상화하면, 남은 각 축의 관계를 RL 모델로 다룰 수 있다. 이때 RL 부분에 작용하는 보상 후 입력을 $$ u_d,u_q $$로 쓰면 다음과 같다.
+At standstill, where electrical speed remains zero, the speed-dependent terms vanish. During rotation, suppose we could calculate and cancel the cross-coupling and back-EMF terms perfectly. We could then treat each remaining axis as an RL system. Calling the compensated inputs $$ u_d,u_q $$ gives
 
 $$
 L_d\frac{di_d}{dt}+R_s i_d=u_d,
@@ -166,7 +166,7 @@ L_d\frac{di_d}{dt}+R_s i_d=u_d,
 L_q\frac{di_q}{dt}+R_s i_q=u_q
 $$
 
-초기 전류를 0으로 두고 라플라스 변환하면, 각 축의 전압에서 전류까지 전달함수는 다음과 같다.
+For zero initial current, the Laplace-domain voltage-to-current transfer functions are
 
 $$
 G_d(s)=\frac{I_d(s)}{U_d(s)}=\frac{1}{L_d s+R_s},
@@ -174,13 +174,13 @@ G_d(s)=\frac{I_d(s)}{U_d(s)}=\frac{1}{L_d s+R_s},
 G_q(s)=\frac{I_q(s)}{U_q(s)}=\frac{1}{L_q s+R_s}
 $$
 
-여기서 $$ s $$는 라플라스 변수다. [Imperix의 PMSM 벡터 제어 기술문서](https://imperix.com/doc/implementation/field-oriented-control-of-pmsm)도 각 축의 RL 모델과 축간 결합을 보상하는 구조를 함께 설명한다.
+Here $$ s $$ is the Laplace variable. The [Imperix note on PMSM field-oriented control](https://imperix.com/doc/implementation/field-oriented-control-of-pmsm) also discusses the RL axis models and decoupling terms.
 
-이 모델을 사용하더라도 두 축의 인덕턴스가 같다는 보장은 없다. 또한 실제 구동계에는 기계 운동, 인버터의 PWM, 전압 한계, 샘플링과 계산 지연, 파라미터 오차가 남는다. $$ L/R $$은 이렇게 단순화한 제어 대상의 시정수이며, PI 제어기를 붙인 뒤의 폐루프 응답 속도와도 구분해야 한다.
+The d- and q-axis inductances need not be equal. A real drive also has mechanical dynamics, inverter PWM, voltage limits, sampling and computation delays, and parameter uncertainty. The $$ L/R $$ value here is the time constant of the simplified plant, not the closed-loop response time after adding a PI controller.
 
-## 6. NumPy로 해와 수치계산을 비교하기
+## 6. Comparing the analytical result with NumPy
 
-아래 코드는 앞의 두 저항 사례를 재현한다. 해석해를 계산하는 동시에, 미분방정식을 전진 오일러 방법으로 한 단계씩 적분해 비교한다. 수치 적분 간격은 각 회로 시정수의 1/1000로 잡았다. Python과 NumPy만 있으면 실행할 수 있다.
+The code below reproduces the two resistance cases. It calculates the exact solution and integrates the differential equation using forward Euler. The integration step is one-thousandth of each circuit's time constant. You only need Python and NumPy to run it.
 
 ```python
 import numpy as np
@@ -225,12 +225,12 @@ for R in (1.0, 2.0):
     )
 ```
 
-앞의 표와 같은 시정수, 최종 전류, 초기 기울기, 1 ms 뒤 전류가 출력된다. 이 시간 간격에서 오일러 계산과 해석해의 최대 차이는 각각 약 0.002208 A와 0.001104 A다. 이것은 수치 근사와 해석해를 비교한 결과이며, 실제 모터에 대한 검증 결과는 아니다.
+It prints the same time constants, final currents, initial slopes, and 1 ms currents as the table. At this step size, the maximum Euler errors relative to the analytical solution are about 0.002208 A and 0.001104 A, respectively. This checks a numerical approximation against an analytical solution; it is not validation on an actual motor.
 
-코드를 바꿔 보기 전에 세 경우의 결과를 먼저 예상해 보자.
+Before changing the code, try predicting what will happen in three cases:
 
-1. **I0 = 3.0**이면 두 저항 사례의 초기 기울기는 여전히 같은가?
-2. **I0 = 15.0**이면 전압이 양수여도 전류가 감소하는가?
-3. **V = 0.0**, **I0 = 3.0**이면 저장된 에너지와 전류는 어떻게 줄어드는가?
+1. With **I0 = 3.0**, do both resistance cases still have the same initial slope?
+2. With **I0 = 15.0**, can current decrease even with positive applied voltage?
+3. With **V = 0.0** and **I0 = 3.0**, how do the stored energy and current decay?
 
-예상이 틀렸다면 초기 조건, 최종값, 미분방정식의 부호 순서로 돌아가면 된다. 다음 글에서는 이 전류 응답을 전달함수와 주파수 응답으로 살펴보고, PI 전류 제어기로 이어 갈 준비를 한다.
+If the results surprise you, go back to the initial condition, final current, and signs in the differential equation. Next, we'll look at the transfer function and frequency response before moving on to PI current control.
