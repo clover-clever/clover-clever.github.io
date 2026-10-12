@@ -33,6 +33,17 @@ def main() -> int:
         if "/app.min.js?baseurl=" in html:
             errors.append(f"{relative}: old PWA registration script still included")
 
+    # Make sure the deployed SW script really replaces the old offline worker.
+    sw = site / "sw.min.js"
+    if not sw.is_file():
+        errors.append("Missing service worker retirement script")
+    elif "self.registration.unregister()" not in sw.read_text(encoding="utf-8"):
+        errors.append("Old caching service worker is still being deployed")
+
+    home = site / "index.html"
+    if home.is_file() and "navigator.serviceWorker.getRegistrations()" not in home.read_text(encoding="utf-8"):
+        errors.append("Missing browser cache-cleanup script")
+
     if not pages:
         errors.append("No generated HTML pages to check")
 
