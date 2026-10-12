@@ -140,9 +140,9 @@ assets:
     env: # [development | production]
 
 pwa:
-  enabled: true # The option for PWA feature (installable)
+  enabled: false # Avoid serving outdated pages after updates
   cache:
-    enabled: true # The option for PWA offline cache
+    enabled: false # Retire the old offline HTML cache
     # Paths defined here will be excluded from the PWA cache.
     # Usually its value is the `baseurl` of another website that
     # shares the same domain name as the current website.
