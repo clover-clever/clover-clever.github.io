@@ -9,11 +9,11 @@
 - Author display name: MOSFET Thief.
 
 ## Content
-- 모터제어·전력전자 → 모터드라이브 / 컨버터.
-- 이모저모 → 수학 / 물리·과학.
+- Motor Control & Power Electronics → Motor Drives / Converters.
+- Other Topics → Mathematics / Physics & Science.
 - Preserve Chirpy's two-level category semantics and normal post pagination.
 - Show these collections clearly before articles are published, without broken archive links.
-- Introductory series: RL 회로에서 PMSM 전류제어까지.
+- Introductory series: From RL circuits to PMSM current control.
 - Prepare the first technical article as an unpublished draft.
 - Do not invent completed research, measured results, or personal credentials.
 

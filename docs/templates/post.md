@@ -1,85 +1,69 @@
 ---
-title: "글 제목"
-description: "이 글에서 답할 질문과 설명 범위를 한 문장으로 적습니다."
+title: "Post title"
+description: "One sentence on what this post covers."
 date: "YYYY-MM-DD HH:MM:SS +0900"
-categories: [모터제어·전력전자, 모터드라이브]
+categories: ["Motor Control & Power Electronics", "Motor Drives"]
 tags: []
 math: true
 published: false
 ---
 
 <!--
-이 파일을 _drafts/ 아래에 복사해서 사용합니다.
-발행할 때 _posts/YYYY-MM-DD-slug.md로 옮기고 date를 채운 뒤 published: false를 제거합니다.
-작성 안내와 예시 문구는 본문을 완성하며 정리합니다.
+Copy this file into _drafts/ to start a new post.
+When the post is ready, move it to _posts/YYYY-MM-DD-slug.md, set the date,
+and remove published: false.
 
-카테고리는 아래 분류 중 하나를 사용합니다.
-[모터제어·전력전자, 모터드라이브]
-[모터제어·전력전자, 컨버터]
-[이모저모, 수학]
-[이모저모, 물리·과학]
-[Reflections]
+Other category combinations:
+["Motor Control & Power Electronics", "Converters"]
+["Other Topics", "Mathematics"]
+["Other Topics", "Physics & Science"]
+["Reflections"]
 
-글의 질문에 필요하지 않은 절은 줄이거나 생략해도 됩니다.
+Keep the sections that suit the topic. There is no need to force the same
+structure onto every post.
 -->
 
-이번 글에서는 **[답하려는 질문]**을 살펴봅니다. **[필요한 배경지식]**을 전제로 하며, **[설명할 범위]**까지 다룹니다.
+Start with the question you're trying to answer and why it matters.
 
-## 직관
+## Intuition
 
-어떤 현상이나 의문에서 출발했는지 적습니다. 간단한 예나 그림으로 예상되는 동작을 설명하고, 직관만으로 판단하기 어려운 지점을 짚습니다.
+What should happen, and why? A simple example often helps.
 
-## 정의와 단위
+## Definitions
 
-기호, 단위, 기준 방향을 먼저 정합니다. 기존 글이나 참고문헌과 표기가 다르면 이곳에서 설명합니다.
+Define symbols, units, and reference directions before using them.
 
-| 기호 | 정의 | 단위 | 기준·부호 |
+| Symbol | Meaning | Unit | Convention |
 | --- | --- | --- | --- |
-| $$x$$ | [물리량 또는 변수의 뜻] | [단위 또는 무차원] | [양의 방향 또는 적용 범위] |
+| $$x$$ | [Quantity] | [Unit] | [Sign or reference direction] |
 
-## 모델
+## Model
 
-- **대상과 범위:** [어떤 계 또는 문제를 다루는가]
-- **입력·상태·출력:** [각 항목과 물리적 의미]
-- **기본 가정:** [일정하다고 둔 값, 선형화 여부, 생략한 현상]
-- **초기·경계조건:** [문제를 풀기 위해 필요한 조건]
+- **System:** [What is being modeled?]
+- **Inputs, states, and outputs:** [Relevant quantities]
+- **Assumptions:** [What is held constant or neglected?]
+- **Initial conditions:** [How does the system start?]
 
-기본 관계식을 적고 각 항의 의미를 설명합니다. 출처가 있는 식은 해당 문헌을 연결합니다.
+Write down the governing equations and link to sources when needed.
 
-<!-- 문장 안 수식은 $$x$$처럼 씁니다. 독립 수식의 Markdown 예시는 다음과 같습니다.
+## Derivation
 
-$$
-y=f(x)
-$$
+Show the steps that matter, including approximations and where they apply.
 
--->
+## Checks
 
-## 핵심 유도
+**Status:** [Not checked / Partly checked / Checked as described below]
 
-출발식에서 목표식까지 중요한 중간 단계를 남깁니다. 근사, 좌표변환, 대입 또는 적분을 했다면 그 이유와 성립 조건을 함께 적습니다.
+- **Claim:** [What are you checking?]
+- **Method:** [Derivation, calculation, simulation, measurement, etc.]
+- **Reference:** [Independent calculation, measurement, or source]
+- **Result:** [What you actually found]
+- **Limits:** [What the check does not establish]
 
-최종식에서 어떤 관계를 읽을 수 있는지 설명합니다. 특정 항을 키우거나 줄였을 때 예상되는 변화도 필요한 범위에서 살펴봅니다.
+## Limitations
 
-## 검증
+Where does the model stop being useful? What has not been tested?
 
-**검증 상태: [미수행 / 일부 수행 / 아래 항목 수행]**
+## References
 
-이 글의 주장에 필요한 확인 방법을 선택합니다. 차원·부호 점검, 초기·경계조건과 극한 검토, 원문 대조, 수치 계산, 시뮬레이션, 실측 중 실제로 수행한 항목만 결과로 기록합니다.
-
-- **확인할 주장:** [무엇이 맞는지 확인하려는가]
-- **방법과 조건:** [사용한 식·자료·코드·환경·매개변수]
-- **비교 기준:** [해석해, 문헌, 독립 계산, 측정값 등]
-- **실제 결과:** [직접 확인한 값이나 관찰 내용. 미수행이면 미수행으로 명시]
-- **해석:** [결과가 뒷받침하는 범위와 남은 불확실성]
-
-## 가정과 한계
-
-어떤 조건에서 설명이 유효한지 정리합니다. 생략한 효과, 검증하지 못한 범위, 문헌의 설명과 직접 확인한 부분을 구분합니다.
-
-다음 글로 이어질 질문이 있다면 한두 가지를 남깁니다. 연구의 새로움이나 실험 성과는 확인한 근거가 있을 때 그 범위에 맞춰 서술합니다.
-
-## 참고문헌
-
-1. [저자], *[문헌 제목]*, [출판사 또는 학술지], [연도], [관련 장·절 또는 페이지]. [확인한 URL 또는 DOI]
-
-인용한 식과 주장에 대응하는 위치를 적습니다. 직접 확인하지 못한 자료는 참고문헌에 확정된 근거처럼 넣지 않습니다.
+1. [Author], *[Title]*, [Publication], [Year], [URL or DOI].
