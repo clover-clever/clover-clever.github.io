@@ -23,7 +23,7 @@
         {% endif %}
       </h2>
       {% if topic_names.size == 0 %}
-        <small class="text-muted">{{ collection_count }}편</small>
+        <small class="text-muted">{{ collection_count }} posts</small>
       </div>
       {% endif %}
       {% if topic_names.size > 0 %}
@@ -38,7 +38,7 @@
               {% else %}
                 <span>{{ topic_name }}</span>
               {% endif %}
-              <small class="text-muted">{{ topic_count }}편</small>
+              <small class="text-muted">{{ topic_count }} posts</small>
             </div>
           </li>
         {% endfor %}

@@ -3,13 +3,13 @@ brand:
   name: Stash
 
 collections:
-  - name: 모터제어·전력전자
+  - name: "Motor Control & Power Electronics"
     topics:
-      - name: 모터드라이브
-      - name: 컨버터
-  - name: 이모저모
+      - name: "Motor Drives"
+      - name: "Converters"
+  - name: "Other Topics"
     topics:
-      - name: 수학
-      - name: 물리·과학
+      - name: "Mathematics"
+      - name: "Physics & Science"
   - name: Reflections
     topics: []

@@ -1,13 +1,13 @@
 <!-- The Side Bar -->
 
-<aside aria-label="주 메뉴" id="sidebar" class="d-flex flex-column align-items-end">
+<aside aria-label="Main navigation" id="sidebar" class="d-flex flex-column align-items-end">
   <header class="profile-wrapper">
     <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
       {%- if site.avatar != empty and site.avatar -%}
         {%- capture avatar_url -%}
           {% include media-url.html src=site.avatar %}
         {%- endcapture -%}
-        <img src="{{- avatar_url -}}" width="112" height="112" alt="MOSFET Thief의 회로 아이콘" onerror="this.style.display='none'">
+        <img src="{{- avatar_url -}}" width="112" height="112" alt="MOSFET Thief circuit icon" onerror="this.style.display='none'">
       {%- endif -%}
     </a>
 
