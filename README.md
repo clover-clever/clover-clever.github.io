@@ -11,12 +11,13 @@ MOSFET Thief의 모터 제어·전력전자 공부와 다양한 호기심을 담
 | `_drafts/` | 사이트 발행 전 초안 |
 | `_posts/` | 발행할 글 |
 | `_tabs/about.md` | 공개 소개 페이지 |
+| `_tabs/projects.md` | 공개 프로젝트 목록 (완료·진행 중 구분) |
 | `docs/templates/post.md` | 새 글 작성 틀 |
 | `assets/img/posts/` | 글에 사용하는 이미지의 권장 저장 위치 |
 
 첫 시리즈는 RL 회로에서 PMSM까지 이어갑니다. 첫 글의 초안 경로는 `_drafts/rl-circuit-current-response.md`입니다.
 
-현재 공개된 `_posts/2026-10-06-tbd.md`는 제목과 본문을 TBD로 둔 임시 글입니다. 실제 첫 글을 발행할 때 교체하거나 삭제합니다. 정보 페이지도 우선 TBD로 둡니다.
+`_posts/2026-10-06-tbd.md`는 발행 전 자리표시자입니다. `published: false`로 사이트 목록에서 제외하며, 실제 첫 글을 발행할 때 교체하거나 삭제합니다. `_tabs/about.md`와 `_tabs/projects.md`는 공개 소개와 프로젝트 기록이며, 검증하지 않은 연구 실적을 게시하지 않습니다.
 
 카테고리는 아래 분류에서 선택합니다. 배열의 첫 항목은 상위 카테고리, 두 번째 항목은 하위 카테고리입니다. Reflections는 하위 분류 없이 사용합니다.
 
