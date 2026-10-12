@@ -1,9 +1,9 @@
 {% if paginator.page == 1 or paginator.page == nil %}
 <section class="stash-intro" aria-labelledby="stash-intro-title">
-  <p class="stash-kicker">Motor Drives · Power Electronics · Embedded Systems</p>
+  <p class="stash-kicker">Motor Control · Power Electronics · Embedded Systems</p>
   <h1 id="stash-intro-title">SangHoon Lee</h1>
-  <p>한양대학교 미래자동차공학과 학부생입니다. Formula Student EV 팀 <a href="https://www.racehanyang.com/" target="_blank" rel="noopener noreferrer">RACE Hanyang</a>에서 차량 전장과 고전압 시스템의 설계·제작을 경험했습니다.</p>
-  <p>모터제어와 전력전자를 중심으로, 실제 시스템에서 만난 문제를 물리 모델과 검증 가능한 설명으로 연결하는 과정을 기록합니다.</p>
+  <p>한양대학교 미래자동차공학과에 재학 중입니다. Formula Student 팀 <a href="https://www.racehanyang.com/" target="_blank" rel="noopener noreferrer">RACE Hanyang</a>에서 전기차를 만들며 고전압·전장 시스템을 맡았습니다.</p>
+  <p>요즘은 모터제어와 전력전자를 주로 공부합니다. 공부하며 정리한 내용과 직접 만든 것들을 이곳에 올립니다.</p>
   <p>
     <a href="{{ '/about/' | relative_url }}">About</a> ·
     <a href="{{ '/projects/' | relative_url }}">Projects</a> ·
@@ -12,24 +12,23 @@
 </section>
 
 <section aria-labelledby="stash-projects-title">
-  <h2 id="stash-projects-title">Selected work</h2>
+  <h2 id="stash-projects-title">Projects</h2>
   <div class="stash-collections">
     <article class="stash-collection">
-      <small>2022–2026 · Formula Student EV / Team project</small>
+      <small>2022–2026 · Formula Student EV</small>
       <h3><a href="{{ '/projects/' | relative_url }}">RACE Hanyang</a></h3>
-      <p>차량 전장·고전압 시스템 및 파워트레인 통합</p>
+      <p>고전압·전장 시스템, BMS, 차량 통합</p>
     </article>
     <article class="stash-collection">
-      <small>2025 · Undergraduate project / Public code</small>
+      <small>2025 · Microprocessor project</small>
       <h3><a href="https://github.com/clover-clever/NuBiHo_Quad_Drone" target="_blank" rel="noopener noreferrer">Quad Drone</a></h3>
-      <p>Arduino 기반 PPM 제어 인터페이스와 PCB 제작</p>
+      <p>Arduino, PPM 제어 신호, PCB 제작</p>
     </article>
   </div>
 </section>
 
 <section aria-labelledby="stash-notes-title">
-  <h2 id="stash-notes-title">Writing &amp; notes</h2>
-  <p class="text-muted">모터드라이브, 전력전자, 수학과 물리, 그리고 다양한 호기심을 정리합니다.</p>
+  <h2 id="stash-notes-title">Notes</h2>
   {% include stash-collections.html %}
 </section>
 {% endif %}

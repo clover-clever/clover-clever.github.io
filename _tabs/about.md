@@ -4,32 +4,22 @@ icon: fas fa-user
 order: 1
 ---
 
-**SangHoon Lee** · 한양대학교 미래자동차공학과 학부생  
-**MOSFET Thief** · Whatever sparks curiosity
+**SangHoon Lee**  
+한양대학교 미래자동차공학과 학부생
 
-모터제어, 전력전자, 임베디드 시스템에 관심이 있습니다. Formula Student EV 차량을 제작하며 실제 하드웨어의 작동과 신뢰성을 다뤘고, 그 경험을 이론·모델링·검증으로 확장하기 위해 공부하고 있습니다.
+2022년부터 [RACE Hanyang](https://www.racehanyang.com/)에서 Formula Student 전기차를 만들었습니다. 주로 고전압·전장 시스템을 맡았고, 전장 총괄과 팀 회장으로도 활동했습니다.
 
-## Focus
+그동안 자동차를 만드는 데 집중했다면, 지금은 모터와 인버터가 어떻게 동작하는지 더 깊게 공부하고 있습니다. 특히 모터제어와 전력전자에 관심이 많습니다.
 
-- **Motor Drives:** PMSM 제어, 전류제어, 모터 파라미터와 구동 시스템
-- **Power Electronics:** 인버터, 게이트 구동, 전력변환 회로
-- **Embedded Systems:** STM32, 실시간 제어 펌웨어, 차량 전장 시스템
-- **Beyond Engineering:** 수학, 물리, 드론
+## 관심 분야
 
-## Background
+- **Motor Control** · PMSM, 전류제어, 모터드라이브
+- **Power Electronics** · 인버터, 전력변환 회로
+- **Embedded Systems** · STM32, 실시간 제어
+- **그 외** · 수학, 물리, 드론
 
-2022년부터 2026년까지 [RACE Hanyang](https://www.racehanyang.com/)의 Formula Student EV 활동을 하며 고전압·전장 시스템과 차량 통합, 팀 운영을 경험했습니다. 학부에서의 제작 경험을 연구 성과로 포장하기보다, 무엇을 구현했고 어떤 근거로 판단했는지를 구분해 기록하려고 합니다.
+## 이 블로그
 
-앞으로는 대학원에서 전동기 구동과 전력전자 연구를 더 깊이 다루는 것을 목표로 하고 있습니다.
+공부하다 정리한 내용, 직접 해본 프로젝트, 논문을 읽고 남긴 메모 등을 모아 둡니다.
 
-## On this site
-
-이곳에는 기술 개념을 직접 유도한 노트, 프로젝트 기록, 논문을 읽으며 정리한 생각을 남깁니다. 작성 중인 내용과 검증을 마친 결과는 명확히 구분합니다.
-
-- [Projects]({{ '/projects/' | relative_url }}): 실제 참여한 작업과 진행 중인 학습 프로젝트
-- [Categories]({{ '/categories/' | relative_url }}): 모터제어·전력전자, 이모저모, Reflections
-- [GitHub](https://github.com/clover-clever): 공개 코드와 저장소
-
-## Contact
-
-[GitHub](https://github.com/clover-clever) · [Email](mailto:akdrhaktapfhs1@gmail.com)
+[Projects]({{ '/projects/' | relative_url }}) · [Categories]({{ '/categories/' | relative_url }}) · [GitHub](https://github.com/clover-clever) · [Email](mailto:akdrhaktapfhs1@gmail.com)
